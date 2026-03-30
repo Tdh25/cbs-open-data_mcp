@@ -111,7 +111,7 @@ Na installatie kun je hem gelijk gebruiken: stel in Copilot Chat of Claude een v
 - *"Toon de CO₂-uitstoot per sector over de afgelopen 5 jaar in een grafiek."*
 - *"Haal dataset 80030ned op in een nieuwe Notebook en plot de totale elektriciteitsproductie per jaar per energiedrager in een stacked area chart met plotly."*
 
-![Example screenshot](example.png)
+![Example screenshot](images/example.png)
 
 ## Bekende beperkingen
 
