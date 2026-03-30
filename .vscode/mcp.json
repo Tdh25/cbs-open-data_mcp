@@ -1,0 +1,21 @@
+{
+  "servers": {
+    "cbs-open-data": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "--no-project",
+        "--isolated",
+        "--link-mode=copy",
+        "--with",
+        "mcp",
+        "--with",
+        "httpx",
+        "python",
+        "-m",
+        "src.cbs_open_data_mcp_server"
+      ]
+    }
+  }
+}

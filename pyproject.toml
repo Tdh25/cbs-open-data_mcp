@@ -1,0 +1,69 @@
+[project]
+name = "cbs-open-data-mcp"
+version = "0.1.0"
+description = "MCP-server voor de CBS Open Data OData API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp>=0.9.1",
+]
+
+[project.scripts]
+cbs-open-data-mcp = "src.cbs_open_data_mcp_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.core"
+
+[dependency-groups]
+dev = [
+    "coverage>=7.0",
+    "ruff>=0.13",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+include = [
+    "src/**/*.py",
+    "tests/**/*.py",
+    "*.py",
+]
+
+exclude = [
+    ".git",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "UP", "B", "SIM", "I", "C4", "RET", "RSE", "Q"]
+ignore = ["T201", "BLE001"]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "ARG001", "PLR2004"]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
