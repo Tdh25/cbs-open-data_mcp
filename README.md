@@ -104,13 +104,14 @@ Of installeer het pakket eerst (`pip install .` of `uv sync`) en gebruik dan het
 
 Na installatie kun je hem gelijk gebruiken: stel in Copilot Chat of Claude een vraag over CBS-statistieken. De AI kiest zelf de juiste tools en werkwijze - mede dankzij meegeleverde copilot-instructies.
 
-**Voorbeeldvragen:**
+**Voorbeeldprompts:**
 
 - *"Welke datasets heeft CBS over aardgasverbruik?"*
-- *"Wat is de CO₂-uitstoot per sector over de afgelopen 5 jaar?"*
-- *"Haal het energieverbruik per provincie op uit dataset 85523NED en zet het in een tabel."*
-- *"Zoek CBS-datasets over bevolkingsgroei en laat de dimensies zien van de meest recente."*
-- *"Wat zijn de beschikbare meetwaarden in dataset 83989NED?"*
+- *"Haal de inwoners per provincie op uit 03759ned (meest recente jaar, totaal) en toon als tabel."*
+- *"Toon de CO₂-uitstoot per sector over de afgelopen 5 jaar in een grafiek."*
+- *"Haal dataset 80030ned op in een nieuwe Notebook en plot de totale elektriciteitsproductie per jaar per energiedrager in een stacked area chart met plotly."*
+
+![Example screenshot](example.png)
 
 ## Bekende beperkingen
 
@@ -126,7 +127,7 @@ uv run python -m unittest tests.test_cbs_open_data_client -v
 
 ## Verwant project
 
-[mcp-cbs-cijfers-open-data](https://github.com/dstotijn/mcp-cbs-cijfers-open-data) van David Stotijn — een MCP-server voor dezelfde CBS Open Data API, geschreven in Go. Dit project is onafhankelijk ontwikkeld in Python en voegt onder andere automatische paginering, label-resolutie en measure-definitie ondersteuning toe.
+[mcp-cbs-cijfers-open-data](https://github.com/dstotijn/mcp-cbs-cijfers-open-data) van David Stotijn — een MCP-server voor dezelfde CBS Open Data API, geschreven in Go. Dit project is onafhankelijk ontwikkeld in Python en voegt onder andere automatische paginering, label-resolutie en measure-definitie-ondersteuning toe.
 
 ## Licentie
 
