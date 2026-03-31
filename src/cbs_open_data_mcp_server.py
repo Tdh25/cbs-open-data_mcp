@@ -10,10 +10,12 @@ Best practices for CBS Open Data queries:
      irrelevant results.
    - Example: filter="contains(Title,'warmte')".
 
-2. **Explore a dataset**:
+2. **Explore a dataset** (optional — only when dimension names or units are unknown):
    - get_dataset_info() -> title, description, status.
    - get_dimensions() -> dimensions with labels.
-   - get_measure_codes() -> measure columns.
+     NOTE: do NOT use get_dimension_values() -- returns 404 on most
+     datasets. get_dimensions() already includes all labels.
+   - get_measure_codes() -> measure columns and units.
 
 3. **Fetch observations**:
    - get_observations() -> all obs with auto-pagination.
@@ -219,6 +221,10 @@ def get_dimension_values(
     top: int = 100,
 ) -> dict[str, Any]:
     """Fetch values for a specific dimension.
+
+    WARNING: this endpoint returns 404 on most CBS datasets.
+    Prefer get_dimensions(), which already resolves all dimension
+    codes and labels via the reliable {dim}Codes endpoints.
 
     Args:
         catalog: Catalog identifier.

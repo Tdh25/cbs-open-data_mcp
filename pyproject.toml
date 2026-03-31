@@ -14,8 +14,11 @@ dependencies = [
 cbs-open-data-mcp = "src.cbs_open_data_mcp_server:main"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.core"
+requires = ["hatchling>=1.6.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
 
 [dependency-groups]
 dev = [
