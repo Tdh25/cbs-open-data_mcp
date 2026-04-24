@@ -5,7 +5,7 @@ applyTo: "**/cbs_open_data*.py,**/*.ipynb"
 ## CBS Open Data MCP – Usage Guide
 
 ### Dataset Discovery
-- **Always** use `filter` with `contains(Title,'...')` or `contains(Description,'...')` — never use `$search` (returns popularity-ranked, irrelevant results).
+- **Always** use `filter` with `contains(Title,'...')` or `contains(Description,'...')` — never use `search`/`$search` (returns popularity-ranked, irrelevant results).
 - Use Title search when the topic keyword likely appears in table titles; use Description search when the keyword is domain-specific and may only appear in the table description.
 - Use **singular** search terms — CBS descriptions contain both singular and plural forms, so searching both is redundant.
 - Use specific terms; generic terms like `'energie'` or `'verbruik'` return large, unfocused result sets.
@@ -13,7 +13,7 @@ applyTo: "**/cbs_open_data*.py,**/*.ipynb"
 - Discontinued datasets are excluded by default.
 
 ### Recommended Workflow
-1. `query_datasets(filter="contains(Title,'keyword')")` → find relevant table IDs. Check `ObservationCount` in results.
+1. `query_datasets(filter="contains(Title,'keyword')")` → start with a **single** validation call (no parallel, no `select`) to find relevant table IDs and check `ObservationCount`.
 2. *(Optional)* Explore structure when dimension names or measure units are unknown:
    - `get_dimensions(dataset="IDHERE")` → dimension names and available codes.
    - `get_measure_codes(dataset="IDHERE")` → measure identifiers and units.
@@ -25,7 +25,7 @@ applyTo: "**/cbs_open_data*.py,**/*.ipynb"
 ### Parameter Naming
 - The dataset parameter is always called `dataset` (not `id`).
 - The catalog parameter defaults to `"CBS"` — omit unless querying a different catalog.
-- Omit `select` unless you know the exact field names; unknown field names in `select` cause a 400 error.
+- Omit `select` unless you know the exact field names; unknown field names in `select` cause a 400 error. If you need `select`, introduce it only after a successful baseline query.
 
 ### Observations
 - **Use `query_observations(filter="...")` when you need server-side filtering** — `get_observations(odata_filter=...)` does NOT reliably apply filters on large datasets.
