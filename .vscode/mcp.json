@@ -9,7 +9,7 @@
         "--isolated",
         "--link-mode=copy",
         "--with",
-        "mcp",
+        "mcp>=1.26.0,<2",
         "--with",
         "httpx",
         "python",
